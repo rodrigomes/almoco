@@ -12,16 +12,14 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :user %><br />
-    <%= f.text_field :user %>
+    <%= f.text_field :user, class: "input-block-level", placeholder: "Username" %>
   </div>
   <div class="field">
-    <%= f.label :time %><br />
-    <%= f.datetime_select :time %>
+    <%= f.label :time %>
+    <%= f.datetime_select :time, class: "input-block-level" %>
   </div>
   <div class="field">
-    <%= f.label :place %><br />
-    <%= f.text_field :place %>
+    <%= f.text_field :place, class: "input-block-level", placeholder: "Place" %>
   </div>
   <div class="actions">
     <%= f.submit %>

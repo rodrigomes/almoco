@@ -259,3 +259,30 @@ vendor
   External libraries that the application depends on. Also includes the plugins
   subdirectory. If the app has frozen rails, those gems also go here, under
   vendor/rails/. This directory is in the load path.
+
+== Backup from Postgres
+
+  heroku addons:add pgbackups
+  heroku pgbackups:capture
+  heroku pgbackups
+  heroku pgbackups:url <DATABASE_ID>
+  curl -o latest.dump <DATABASE_URL>
+
+Start local database configuration:
+
+  sudo -u postgres psql
+  create user bacatuba with password '123456';
+  create database baca_dev owner bacatuba;
+  create database baca_test owner bacatuba;
+  create database baca_prod owner bacatuba;
+  GRANT ALL ON DATABASE baca_dev to bacatuba;
+  GRANT ALL ON DATABASE baca_test to bacatuba;
+  GRANT ALL ON DATABASE baca_prod to bacatuba;
+  \q
+
+  rake db:create
+  rake db:migrate
+
+  pg_restore --verbose --clean --no-acl --no-owner -h localhost -U bacatuba -d baca_dev latest.dump
+
+Now go to http://localhost:3000 et voilà!

@@ -6,6 +6,18 @@ class PostsController < ApplicationController
 
     @posts = Post.where("time > ?", Date.yesterday)
 
+    if params[:time]
+      @posts = @posts.sort { |p1, p2| p1.time <=> p2.time }
+    end
+
+    if params[:user]
+      @posts = @posts.sort { |p1, p2| p1.user <=> p2.user }
+    end
+
+    if params[:place]
+      @posts = @posts.sort { |p1, p2| p1.place <=> p2.place }
+    end
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @posts }

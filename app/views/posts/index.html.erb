@@ -1,10 +1,19 @@
+<style type="text/css">
+  body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+  .sidebar-nav {
+    padding: 9px 0;
+  }
+</style>
 <h1>Listing posts</h1>
 
 <table>
   <tr>
-    <th>User</th>
-    <th>Time</th>
-    <th>Place</th>
+    <th><%= link_to "User", {controller: :posts, action: :index, user: "1"} %></th>
+    <th><%= link_to "Time", {controller: :posts, action: :index, time: "1"} %></th>
+    <th><%= link_to "Place", {controller: :posts, action: :index, place: "1"} %></th>
     <th></th>
     <th></th>
     <th></th>

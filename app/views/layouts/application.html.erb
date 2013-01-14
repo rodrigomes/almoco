@@ -6,9 +6,24 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
+<style type="text/css">
+  body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+  .sidebar-nav {
+    padding: 9px 0;
+  }
+</style>
 <body>
+<div class="container-fluid">
+  <hr>
+  <div class="row-fluid">
 
-<%= yield %>
+    <%= yield %>
 
+  </div>
+  <hr>
+</div>
 </body>
 </html>
